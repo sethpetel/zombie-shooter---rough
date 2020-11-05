@@ -11,7 +11,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sp
     statusbar.value += -100
 })
 statusbars.onStatusReached(StatusBarKind.Health, statusbars.StatusComparison.LTE, statusbars.ComparisonType.Percentage, 50, function (status) {
-    pause(5000)
+    pause(3500)
     statusbar.value += 100
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -444,11 +444,6 @@ function zombieSpawn(zombies: any[]){
             
         }
     }
-}
-if (player.vx > 0) {
-    player.setImage(gunLeft)
-} else {
-    player.setImage(gunRight)
 }
 game.splash("SURVIVE.", "DON'T TOUCH THE LAVA.")
 game.onUpdate(function () {
