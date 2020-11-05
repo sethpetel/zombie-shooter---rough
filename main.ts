@@ -30,15 +30,12 @@ sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
     zombieCounter += -1
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    
     // Chi: Get status bar of the zombie.
-    let bar = statusbars.getStatusBarAttachedTo(StatusBarKind.EnemyHealth, otherSprite)
+    bar = statusbars.getStatusBarAttachedTo(StatusBarKind.EnemyHealth, otherSprite)
     bar.value = bar.value - 30
-
-    if(bar.value <= 0){
+    if (bar.value <= 0) {
         otherSprite.destroy()
     }
-
     sprite.destroy()
     info.changeScoreBy(100)
 })
@@ -58,15 +55,16 @@ if (player.image == gunLeft || player.image == gunShootLeft) {
         player.ax = 0
     }
 })
+let bar: StatusBarSprite = null
 let zombieCounter = 0
 let gunShootRight: Image = null
 let gunRight: Image = null
 let gunShootLeft: Image = null
 let gunLeft: Image = null
-let statusbar2 = null
-let waveNumber = 0
-let player: Sprite = null
 let statusbar: StatusBarSprite = null
+let player: Sprite = null
+let waveNumber = 0
+let statusbar2 = null
 let zombieSpeed = 35
 let maxZombieSpeed = 75
 // lava, waves, projectile weapon aka guns, walls, win condition, health bar on player and zombies, make it multiplayer
@@ -441,8 +439,8 @@ function zombieSpawn(zombies: any[]){
             tiles.placeOnRandomTile(tempZombie,  sprites.dungeon.floorDarkDiamond)
 
             // Chi: Attach a status bar for zombie. I think default is 100 health
-            let bar = statusbars.create(20, 4, StatusBarKind.EnemyHealth)
-            bar.attachToSprite(tempZombie)
+            let bar2 = statusbars.create(20, 4, StatusBarKind.EnemyHealth)
+            bar2.attachToSprite(tempZombie)
             
         }
     }
